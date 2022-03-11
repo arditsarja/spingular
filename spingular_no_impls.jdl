@@ -1,0 +1,423 @@
+
+// Monolithic Spingular V6.3.1
+// NOTE: Check required fields in entities
+
+// ENTITIES:
+entity Blog {
+    creationDate Instant required
+    title String minlength(2) maxlength(100) required
+    image ImageBlob
+}
+
+entity Post {
+    creationDate Instant required
+    publicationDate Instant
+    headline String minlength(2) maxlength(100) required
+    leadText String minlength(2) maxlength(1000)
+    bodyText String minlength(2) maxlength(65000) required
+    quote String minlength(2) maxlength(1000)
+    conclusion String minlength(2) maxlength(2000)
+    linkText String minlength(2) maxlength(1000)
+    linkURL String minlength(2) maxlength(1000)
+    image ImageBlob
+}
+
+entity Topic {
+    topicName String minlength(2) maxlength(40) required
+}
+
+entity Tag {
+    tagName String minlength(2) maxlength(40) required
+}
+
+entity Comment {
+    creationDate Instant required
+    commentText String minlength(2) maxlength(65000) required
+    isOffensive Boolean
+}
+
+entity CMessage {
+    creationDate Instant required
+    messageText String minlength(2) maxlength(8000) required
+    isDelivered Boolean
+}
+
+entity Message {
+    creationDate Instant required
+    messageText String minlength(2) maxlength(8000) required
+    isDelivered Boolean
+}
+
+entity Notification {
+    creationDate Instant required
+    notificationDate Instant
+    notificationReason NotificationReason required
+    notificationText String minlength(2) maxlength(100)
+    isDelivered Boolean
+}
+
+entity AppPhoto {
+    creationDate Instant required
+    image ImageBlob
+}
+
+// MODIFY AppProfile to hold some universal value defining the Social Media
+entity AppProfile {
+    creationDate Instant required
+    gender Gender
+    phone String maxlength(20)
+    bio String maxlength(7500)
+    facebook String maxlength(50)
+    twitter String maxlength(50)
+    linkedin String maxlength(50)
+    instagram String maxlength(50)
+    googlePlus String maxlength(50)
+    birthdate Instant
+    civilStatus CivilStatus
+    lookingFor Gender
+    purpose Purpose
+    physical Physical
+    religion Religion
+    ethnicGroup EthnicGroup
+    studies Studies
+    siblings Integer min(-1) max(20)
+    eyes Eyes
+    smoker Smoker
+    children Children
+    futureChildren FutureChildren
+    pet Boolean
+}
+
+entity Community {
+    creationDate Instant required
+    communityName String minlength(2) maxlength(100) required
+    communityDescription String minlength(2) maxlength(7500) required
+    image ImageBlob
+    isActive Boolean
+}
+
+entity Follow {
+    creationDate Instant
+}
+
+entity BlockUser {
+    creationDate Instant
+}
+
+entity Album {
+    creationDate Instant required
+    title String minlength(2) maxlength(100) required
+}
+
+entity CAlbum {
+    creationDate Instant required
+    title String minlength(2) maxlength(100) required
+}
+
+entity Photo {
+    creationDate Instant required
+    image ImageBlob
+}
+
+entity Interest {
+    interestName String minlength(2) maxlength(40) required
+}
+
+entity Activity {
+    activityName String minlength(2) maxlength(40) required
+}
+
+entity Celeb {
+    celebName String minlength(2) maxlength(40) required
+}
+
+entity CInterest {
+    interestName String minlength(2) maxlength(40) required
+}
+
+entity CActivity {
+    activityName String minlength(2) maxlength(40) required
+}
+
+entity CCeleb {
+    celebName String minlength(2) maxlength(40) required
+}
+
+entity UrlLink {
+    linkText String required
+    linkURL String required
+}
+
+entity FrontPageConfig {
+    creationDate Instant required
+    topNews1 Long
+    topNews2 Long
+    topNews3 Long
+    topNews4 Long
+    topNews5 Long
+    latestNews1 Long
+    latestNews2 Long
+    latestNews3 Long
+    latestNews4 Long
+    latestNews5 Long
+    breakingNews1 Long
+    recentPosts1 Long
+    recentPosts2 Long
+    recentPosts3 Long
+    recentPosts4 Long
+    featuredArticles1 Long
+    featuredArticles2 Long
+    featuredArticles3 Long
+    featuredArticles4 Long
+    featuredArticles5 Long
+    featuredArticles6 Long
+    featuredArticles7 Long
+    featuredArticles8 Long
+    featuredArticles9 Long
+    featuredArticles10 Long
+    popularNews1 Long
+    popularNews2 Long
+    popularNews3 Long
+    popularNews4 Long
+    popularNews5 Long
+    popularNews6 Long
+    popularNews7 Long
+    popularNews8 Long
+    weeklyNews1 Long
+    weeklyNews2 Long
+    weeklyNews3 Long
+    weeklyNews4 Long
+    newsFeeds1 Long
+    newsFeeds2 Long
+    newsFeeds3 Long
+    newsFeeds4 Long
+    newsFeeds5 Long
+    newsFeeds6 Long
+    usefulLinks1 Long
+    usefulLinks2 Long
+    usefulLinks3 Long
+    usefulLinks4 Long
+    usefulLinks5 Long
+    usefulLinks6 Long
+    recentVideos1 Long
+    recentVideos2 Long
+    recentVideos3 Long
+    recentVideos4 Long
+    recentVideos5 Long
+    recentVideos6 Long
+}
+
+entity VTopic {
+    creationDate Instant required
+    vTopicTitle String minlength(2) maxlength(50) required
+    vTopicDescription String minlength(2) maxlength(250)
+}
+
+entity VQuestion {
+    creationDate Instant required
+    vQuestion String minlength(2) maxlength(100) required
+    vQuestionDescription String minlength(2) maxlength(250)
+}
+
+entity VAnswer {
+    creationDate Instant required
+    urlVAnswer String minlength(2) maxlength(500) required
+    accepted Boolean
+}
+
+entity VThumb {
+    creationDate Instant required
+    vThumbUp Boolean
+    vThumbDown Boolean
+}
+
+entity Newsletter {
+    creationDate Instant required
+    email String required
+}
+entity Feedback {
+    creationDate Instant required
+    name String minlength(2) maxlength(100) required
+    email String required
+    feedback String minlength(2) maxlength(5000) required
+}
+
+entity ConfigVariables {
+    configVarLong1 Long
+    configVarLong2 Long
+    configVarLong3 Long
+    configVarLong4 Long
+    configVarLong5 Long
+    configVarLong6 Long
+    configVarLong7 Long
+    configVarLong8 Long
+    configVarLong9 Long
+    configVarLong10 Long
+    configVarLong11 Long
+    configVarLong12 Long
+    configVarLong13 Long
+    configVarLong14 Long
+    configVarLong15 Long
+    configVarBoolean16 Boolean
+    configVarBoolean17 Boolean
+    configVarBoolean18 Boolean
+    configVarString19 String
+    configVarString20 String
+}
+
+entity Proposal {
+    creationDate Instant required
+    proposalName String minlength(2) maxlength(250) required
+    proposalType ProposalType required
+    proposalRole ProposalRole required
+    releaseDate Instant
+    isOpen Boolean
+    isAccepted Boolean
+    isPaid Boolean
+}
+
+entity ProposalVote {
+    creationDate Instant required
+    votePoints Long required
+}
+
+entity AppUser {
+   creationDate Instant required
+   assignedVotesPoints Long
+}
+
+// ENUMS:
+enum Gender {
+    MALE, FEMALE, OTHER
+}
+
+enum CivilStatus {
+    NA, SINGLE, MARRIED, DIVORCED, WIDOWER, SEPARATED, ENGAGED, OTHER
+}
+
+enum Purpose {
+    NOT_INTERESTED, FRIENDSHIP, MEET_PEOPLE, STABLE_RELATIONSHIP, MARRIAGE, OTHER
+}
+
+enum Physical {
+    NA, THIN, ATHLETIC, NORMAL, CORPULENT, BULKY, OTHER
+}
+
+enum Religion {
+    NA, ATHEIST, AGNOSTIC, CATHOLIC, JEWISH, ISLAMIC, OTHER
+}
+
+enum EthnicGroup {
+    NA, MIXED, WHITE, LATIN, GYPSY, AFRO, HINDU, ARAB, ASIAN, INDIAN, OTHER
+}
+
+enum Studies {
+    NA, PRIMARY, HIGH_SCHOOL, TECHNICAL, COLLEGE, MASTER, DOCTORATE, OTHER
+}
+
+enum Eyes {
+    NA, BLUE, GREEN, BROWN, BLACK, CHESTNUT, OTHER
+}
+
+enum Smoker {
+    NA, YES, NO, OCCASIONALLY
+}
+
+enum Children {
+    NA, YES, NO, GREATER_THAN_18
+}
+
+enum FutureChildren {
+    NA, YES, NO
+}
+
+enum NotificationReason {
+    FOLLOWING, UNFOLLOWING, PROPOSAL_RELEASED, FOLLOWER_STATUS, AUTHORIZE_COMMUNITY_FOLLOWER, UNAUTHORIZE_COMMUNITY_FOLLOWER
+}
+
+enum ProposalType {
+    STUDY, APPROVED, DEVELOPMENT, PRODUCTION
+}
+
+enum ProposalRole {
+    USER, ORGANIZER, MANAGER, ADMIN
+}
+
+// RELATIONSHIPS:
+relationship OneToOne {
+    AppUser{user(id) required} to User{appUser(id)}
+    AppProfile{appUser(id) required} to AppUser{AppProfile(id)}
+    AppPhoto{appUser(id) required} to AppUser{AppPhoto(id)}
+}
+
+relationship ManyToOne {
+    Community{appUser(id) required} to AppUser{community}
+    Blog{appUser(id) required} to AppUser{blog(title)}
+    Notification{appUser(id) required} to AppUser{notification}
+    Album{appUser(id) required} to AppUser{album(id)}
+    CAlbum{community(communityName) required} to Community{cAlbum(id) required}
+    Comment{appUser(id) required} to AppUser{comment}
+    Post{appUser(id) required} to AppUser{post}
+    Message{sender(id)} to AppUser{sender(id)}
+    Message{receiver(id)} to AppUser{receiver(id)}
+    Follow{followed(id)} to AppUser{followed(id)}
+    Follow{following(id)} to AppUser{following(id)}
+    BlockUser{blockedUser(id)} to AppUser{blockedUser(id)}
+    BlockUser{blockingUser(id)} to AppUser{blockingUser(id)}
+    VTopic{appUser(id) required} to AppUser{vTopic(id)}
+    VQuestion{appUser(id) required} to AppUser{vQuestion(id)}
+    VAnswer{appUser(id) required} to AppUser{vAnswer(id)}
+    VThumb{appUser(id) required} to AppUser{vThumb(id)}
+    Proposal{appUser(id)} to AppUser{proposal(id)}
+    ProposalVote{appUser(id)} to AppUser{proposalVote(id)}
+}
+
+relationship OneToMany {
+    Community{blog(id)} to Blog{community(communityName)}
+    Blog{post(id)} to Post{blog(title) required}
+    Post{comment(id)} to Comment{post(id) required}
+    Community{cSender(id)} to CMessage{cSender(id)}
+    Community{cReceiver(id)} to CMessage{cReceiver(id)}
+    Community{cFollowed(id)} to Follow{cFollowed(id)}
+    Community{cFollowing(id)} to Follow{cFollowing(id)}
+    Community{cBlockedUser(id)} to BlockUser{cBlockedUser(id)}
+    Community{cBlockingUser(id)} to BlockUser{cBlockingUser(id)}
+    Album{photo(id)} to Photo{album(title)}
+    CAlbum{photo(id)} to Photo{cAlbum(title)}
+    VTopic{vQuestion} to VQuestion{vTopic(id) required}
+    VQuestion{vAnswer(id)} to VAnswer{vQuestion(id) required}
+    VQuestion{vThumb(id)} to VThumb{vQuestion(id)}
+    VAnswer{vThumb(id)} to VThumb{vAnswer(id)}
+    Proposal{proposalVote(id)} to ProposalVote{proposal(id)}
+    Post{proposal(id)} to Proposal{post(id)}
+}
+
+relationship ManyToMany {
+    Tag{post(headline)} to Post{tag(tagName)}
+    Topic{post(headline)} to Post{topic(topicName)}
+    CInterest{community(id)} to Community{cInterest(interestName)}
+    CActivity{community(id)} to Community{cActivity(activityName)}
+    CCeleb{community(id)} to Community{cCeleb(celebName)}
+    Interest{appUser(id)} to AppUser{interest(interestName)}
+    Activity{appUser(id)} to AppUser{activity(activityName)}
+    Celeb{appUser(id)} to AppUser{celeb(celebName)}
+}
+
+//// SET PAGINATION OPTIONS:
+//paginate all with pagination
+//paginate ChatMessage with infinite-scroll
+//// paginate all with infinite-scroll
+//
+//// SET SERVICE OPTIONS:
+////service all with serviceImpl
+//service all with serviceClass
+//
+//// DTO:
+//dto * with mapstruct
+//
+//// FILTERING:
+//filter *
+
+use pagination for * except ChatMessage
+use infinite-scroll for ChatMessage
+use mapstruct, serviceClass, filter for *
